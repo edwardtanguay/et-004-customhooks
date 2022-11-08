@@ -14,10 +14,12 @@ function App() {
 				<NavLink to="/useToggle">useToggle</NavLink>
 				<NavLink to="/useFetch">useFetch</NavLink>
 			</nav>
-
-			<PageWelcome />
-			<PageUseToggle />
-			<PageUseFetch />
+			<Routes>
+				<Route path="/welcome" element={<PageWelcome />} />
+				<Route path="/useToggle" element={<PageUseToggle />} />
+				<Route path="/useFetch" element={<PageUseFetch />} />
+				
+			</Routes>
 		</div>
 	);
 }
