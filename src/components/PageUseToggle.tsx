@@ -3,8 +3,7 @@ import { useToggle } from '../hooks/useToggle';
 
 export const PageUseToggle = () => {
 	const [showAds, toggleAds, adsClass] = useToggle(false);
-	// const [showAds, setShowAds] = useState(false);
-	const [sendMail, setSendMail] = useState(false);
+	const [sendMail, toggleMail, mailClass] = useToggle(false);
 
 	return (
 		<div className="pageUseToggle">
@@ -19,8 +18,8 @@ export const PageUseToggle = () => {
 			</div>
 
 			<div className="toggleArea">
-				<button onClick={() => setSendMail(!sendMail)}>Mail</button>{' '}
-				<span className={sendMail ? 'positive' : 'negative'}>
+				<button onClick={toggleMail}>Mail</button>{' '}
+				<span className={mailClass}>
 					{sendMail
 						? 'Yes, send me mail.'
 						: 'No, do not send me mail.'}
