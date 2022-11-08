@@ -20,6 +20,7 @@ function App() {
 				<Route path="/useFetch" element={<PageUseFetch />} />
 				
 			</Routes>
+
 		</div>
 	);
 }
