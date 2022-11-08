@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useFetch } from '../hooks/useFetch';
 
 const productsUrl =
 	'https://raw.githubusercontent.com/graphql-compose/graphql-compose-examples/master/examples/northwind/data/json/products.json';
@@ -7,17 +8,9 @@ const ordersUrl =
 	'https://raw.githubusercontent.com/graphql-compose/graphql-compose-examples/master/examples/northwind/data/json/orders.json';
 
 export const PageUseFetch = () => {
-	// const [products] = useFetch(productsUrl);
-	const [products, setProducts] = useState([]);
+	const [products, loadingProducts, numberOfProducts] = useFetch(productsUrl);
+	// const [products, setProducts] = useState([]);
 	const [orders, setOrders] = useState([]);
-
-	useEffect(() => {
-		setTimeout(() => {
-			(async () => {
-				setProducts((await axios.get(productsUrl)).data);
-			})();
-		}, Math.floor(Math.random() * 2000) + 1000);
-	}, []);
 
 	useEffect(() => {
 		setTimeout(() => {
@@ -31,14 +24,14 @@ export const PageUseFetch = () => {
 		<>
 			<p>The useFetch page.</p>
 			<hr />
-			{products.length > 0 ? (
+			{!loadingProducts ? (
 				<>
-					<p>There are {products.length} products.</p>
-					{products.map((product: any, i) => {
+					<p>There are {numberOfProducts} products.</p>
+					{products.map((product: any, i: number) => {
 						return (
 							<span key={product.productID}>
 								{product.productID}
-								{products.length - 1 !== i && (
+								{numberOfProducts - 1 !== i && (
 									<span>,</span>
 								)}{' '}
 							</span>
