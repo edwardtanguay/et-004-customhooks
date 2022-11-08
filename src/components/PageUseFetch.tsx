@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useFetch } from '../hooks/useFetch';
 
 const productsUrl =
@@ -9,16 +7,7 @@ const ordersUrl =
 
 export const PageUseFetch = () => {
 	const [products, loadingProducts, numberOfProducts] = useFetch(productsUrl);
-	// const [products, setProducts] = useState([]);
-	const [orders, setOrders] = useState([]);
-
-	useEffect(() => {
-		setTimeout(() => {
-			(async () => {
-				setOrders((await axios.get(ordersUrl)).data);
-			})();
-		}, Math.floor(Math.random() * 2000) + 1000);
-	}, []);
+	const [orders, loadingOrders, numberOfOrders] = useFetch(ordersUrl);
 
 	return (
 		<>
@@ -41,14 +30,14 @@ export const PageUseFetch = () => {
 			) : (
 				<p>Loading products...</p>
 			)}
-			{orders.length > 0 ? (
+			{!loadingOrders ? (
 				<>
-					<p>There are {orders.length} orders.</p>
+					<p>There are {numberOfOrders} orders.</p>
 					{orders.map((order: any, i) => {
 						return (
 							<span key={order.orderID}>
 								{order.orderID}
-								{products.length - 1 !== i && (
+								{numberOfOrders- 1 !== i && (
 									<span>,</span>
 								)}{' '}
 							</span>
