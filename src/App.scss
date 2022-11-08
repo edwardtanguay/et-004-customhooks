@@ -4,10 +4,30 @@ body {
 	font-family: sans-serif;
 	padding: 0 1rem;
 
+	div#root {
+		div.App {
+			p {
+				color: #777;
+			}
+		}
+	}
+
+	div#root {
+		div.App {
+			div {
+				p {
+					color: yellow;
+				}
+			}
+		}
+	}
+
+
 	h1 {
 		a {
 			color: rgb(209, 168, 85);
 			text-decoration: none;
+
 			img {
 				width: 6rem;
 			}
@@ -27,6 +47,15 @@ body {
 
 		a.active {
 			color: rgb(211, 211, 110);
+		}
+	}
+
+	.pageUseToggle {
+		.positive {
+			color: lightgreen;
+		}
+		.negative {
+			color: red;
 		}
 	}
 }
