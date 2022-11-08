@@ -30,8 +30,16 @@ export const PageUseFetch = () => {
 		<>
 			<p>The useFetch page.</p>
 			<hr />
-			<p>There are {products.length} products.</p>
-			<p>There are {orders.length} orders.</p>
+			{products.length > 0 ? (
+				<p>There are {products.length} products.</p>
+			) : (
+				<p>Loading products...</p>
+			)}
+			{orders.length > 0 ? (
+				<p>There are {orders.length} orders.</p>
+			) : (
+				<p>Loading orders...</p>
+			)}
 		</>
 	);
 };
